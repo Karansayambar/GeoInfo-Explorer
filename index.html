@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GEOINFO-EXPLORER</title>
+</head>
+
+<body>
+    <section id="section-1">
+        <div id="left">
+            <h1>Post Office Application.</h1>
+            <p>This Application Allows you to extract information about the nearest Post Offices, based on your location.</p>
+            <img class="img" src="./assets/left-img.png" alt="">
+        </div>
+        <div id="right">
+            <p id="para">Your Current IP Address is <span id="ip-address">Loading...</span></p>
+            <button class="btn" onclick="redirectToLocation()">Get Started</button>
+        </div>
+        <script>
+            function getIpAddress() {
+                return fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => data.ip)
+                    .catch(error => {
+                        console.error('Error fetching IP address:', error);
+                        throw error;
+                    });
+            }
+
+            function redirectToLocation() {
+                getIpAddress()
+                    .then(userIpAddress => {
+                        window.location.href = `location.html?ip=${userIpAddress}`;
+                    })
+                    .catch(error => {
+                        console.error('Failed to get IP address:', error);
+                        alert('Failed to get IP address. Please try again.');
+                    });
+            }
+
+            getIpAddress().then(ipAddress => {
+                document.getElementById('ip-address').textContent = ipAddress;
+            });
+        </script>
+    </section>
+</body>
+
+</html>

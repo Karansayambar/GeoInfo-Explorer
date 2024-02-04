@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="location.css">
+    <title>Location Information</title>
+</head>
+
+<body>
+    <section id="section-2">
+        <div id="location-details">
+            <h2>User Location Details</h2>
+                <p>IP Address: <span id="ip-address">127.0.0.1</span></p>
+                <div>
+                    <div>
+                        <p>Latitude: <span id="latitude"></span></p>
+                        <p>Longitude: <span id="longitude"></span></p>
+                        </div>
+                        <div><p>City: <span id="city"></span></p>
+                            <p>Region: <span id="region"></span></p>
+                            </div>
+                            <div>
+                                <p>Organisation: <span id="organisation"></span></p>
+                            <p>Hostname: <span id="hostname"></span></p>
+                            </div>
+                            
+                </div>
+        </div>
+
+        <div id="map-container">
+            <h2>Map</h2>
+            <iframe
+                src="https://maps.google.com/maps?q=35.856737,10.606619&z=15&output=embed"
+                width="100%"
+                height="600"
+                frameborder="0"
+                style="border:0"
+            ></iframe>
+        </div>
+
+        <div id="post-office-details">
+            <h2>Post Office Details</h2>
+            <p>Time Zone: <span id="time-zone"></span></p>
+            <p>Date And Time: <span id="date-and-time"></span></p>
+            <p>Pincode: <span id="pincode"></span></p>
+            <p>Message: <span id="pincode-message"></span></p>
+
+            <h3>Number of pincode(s) found: <span id="pincode-count"></span></h3>
+
+            <div id="post-office-list-details"></div>
+        </div>
+        <div id="post-offices">
+            <h2>Post Offices in Your Area</h2>
+            <div id="search-container">
+                <label for="search">Search:</label>
+                <input type="text" id="search" oninput="filterPostOffices()" placeholder="Enter office name">
+                <button id="getPostOfficeDetailsBtn" onclick="getPostOfficeDetails()">Get Post Office Details</button>
+
+            </div>
+            <ul id="post-office-list"></ul>
+            <div id="post-office-details-container">
+                <h2>Post Office Details</h2>
+                <p id="post-office-name"></p>
+                <p id="post-office-branch-type"></p>
+                <p id="post-office-delivery-status"></p>
+                <p id="post-office-district"></p>
+                <p id="post-office-division"></p>
+            </div>
+        </div>
+        
+    </section>
+
+    <script src="./location.js">
+    </script>
+</body>
+
+</html>
